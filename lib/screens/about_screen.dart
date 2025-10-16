@@ -88,24 +88,22 @@ class AboutScreen extends StatelessWidget {
                 context,
                 title: 'Experience',
                 content: '',
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 16),
-                      _buildExperienceItem(
-                        'Full Stack Developer',
-                        ' • 2025 - Present',
-                        context,
-                      ),
-                      SizedBox(height: 16),
-                      _buildExperienceItem(
-                        'Junior Developer',
-                        ' • 2025 - Present',
-                        context,
-                      ),
-                    ],
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 16),
+                    _buildExperienceItem(
+                      'Full Stack Developer',
+                      ' • 2025 - Present',
+                      context,
+                    ),
+                    SizedBox(height: 16),
+                    _buildExperienceItem(
+                      'Junior Developer',
+                      ' • 2025 - Present',
+                      context,
+                    ),
+                  ],
                 ),
               ),
             ),
