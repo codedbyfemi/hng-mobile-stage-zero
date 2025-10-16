@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../widgets/skill_chip.dart';
 import '../models/skill_model.dart';
@@ -7,7 +8,14 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final skillCategories = [
       SkillCategory(
-        title: 'Frontend Development',
+        title: 'Tools & Other',
+        skills: [
+          Skill(name: 'Git', category: 'tools'),
+          Skill(name: 'REST APIs', category: 'tools'),
+        ],
+      ),
+      SkillCategory(
+        title: 'Frontend ',
         skills: [
           Skill(name: 'Flutter', category: 'frontend'),
         ],
@@ -22,13 +30,6 @@ class AboutScreen extends StatelessWidget {
           Skill(name: 'Java', category: 'backend'),
           Skill(name: 'PostgreSQL', category: 'backend'),
           Skill(name: 'MongoDB', category: 'backend'),
-        ],
-      ),
-      SkillCategory(
-        title: 'Tools & Other',
-        skills: [
-          Skill(name: 'Git', category: 'tools'),
-          Skill(name: 'REST APIs', category: 'tools'),
         ],
       ),
     ];
@@ -52,31 +53,64 @@ class AboutScreen extends StatelessWidget {
           SizedBox(height: 24),
 
           // Skills
-          ...skillCategories.map((category) => _buildSkillCategory(context, category)).toList(),
-          SizedBox(height: 24),
+           // Skills Section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Row for first two categories
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // First Category (Tools & Other)
+                  Expanded(
+                    child: _buildSkillCategory(context, skillCategories[0]),
+                  ),
+                  SizedBox(width: 16), // horizontal space between the two
+                  // Second Category (Frontend Development)
+                  Expanded(
+                    child: _buildSkillCategory(context, skillCategories[1]),
+                  ),
+                ],
+              ),
 
-          // Experience
-          _buildSection(
-            context,
-            title: 'Experience',
-            content: '',
-            child: Column(
-              children: [
-                SizedBox(height: 16),
-                _buildExperienceItem(
-                  'Full Stack Developer',
-                  ' • 2025 - Present',
-                  context,
+              // SizedBox(height: 16), // vertical space before the next row
+
+              // Last Category (Backend Development)
+              _buildSkillCategory(context, skillCategories[2]),
+            ],
+          ),
+
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: double.infinity, // forces full width
+              child: _buildSection(
+                context,
+                title: 'Experience',
+                content: '',
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 16),
+                      _buildExperienceItem(
+                        'Full Stack Developer',
+                        ' • 2025 - Present',
+                        context,
+                      ),
+                      SizedBox(height: 16),
+                      _buildExperienceItem(
+                        'Junior Developer',
+                        ' • 2025 - Present',
+                        context,
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 16),
-                _buildExperienceItem(
-                  'Junior Developer',
-                  ' • 2025 - Present',
-                  context,
-                ),
-              ],
+              ),
             ),
           ),
+
           SizedBox(height: 40),
         ],
       ),
