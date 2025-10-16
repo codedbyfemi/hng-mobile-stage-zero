@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisSpacing: 12,
             crossAxisSpacing: 12,
             children: [
-              StatCard(value: '3+', label: 'Projects'),
+              StatCard(value: '30+', label: 'Projects'),
               StatCard(value: '.7+ yrs', label: 'Experience'),
               StatCard(value: '0', label: 'Clients'),
             ],
