@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hng_mobile_stage_zero/models/contact_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatefulWidget {
@@ -60,24 +61,15 @@ class _ContactScreenState extends State<ContactScreen> {
             child: Column(
               children: [
                 _buildContactItem(
-                  Icons.email,
-                  'Email',
-                  'oluwafemiolatunji6002@gmail.com',
-                  context,
+                  ContactInfo(label: 'Email', value: 'oluwafemiolatunji6002@gmail.com', icon: Icons.email),
                 ),
                 SizedBox(height: 16),
                 _buildContactItem(
-                  Icons.phone,
-                  'Phone',
-                  '+(234) 906 962 7222',
-                  context,
+                  ContactInfo(label: "Phone", value: '+(234) 906 962 7222', icon: Icons.phone),
                 ),
                 SizedBox(height: 16),
                 _buildContactItem(
-                  Icons.location_on,
-                  'Location',
-                  'Lagos Nigeria',
-                  context,
+                  ContactInfo(label: 'Location', value: 'Lagos, Nigeria', icon: Icons.location_on),
                 ),
               ],
             ),
@@ -162,27 +154,24 @@ class _ContactScreenState extends State<ContactScreen> {
   }
 
   Widget _buildContactItem(
-    IconData icon,
-    String label,
-    String value,
-    BuildContext context,
+    ContactInfo info,
     [VoidCallback? onTap]
   ) {
     return GestureDetector(
       onTap: onTap,
       child: Row(
         children: [
-          Icon(icon, color: Color(0xFF3B82F6), size: 24),
+          Icon(info.icon, color: Color(0xFF3B82F6), size: 24),
           SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                label,
+                info.label,
                 style: TextStyle(fontSize: 12, color: Color(0xFF94A3B8)),
               ),
               Text(
-                value,
+                info.value,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
             ],
@@ -224,7 +213,7 @@ class _ContactScreenState extends State<ContactScreen> {
       scheme: 'mailto',
       path: email,
     );
-    if (await canLaunchUrl(emailUri)) {
+    if (await canLaunchUrl((emailUri))) {
       await launchUrl(emailUri);
     }
   }

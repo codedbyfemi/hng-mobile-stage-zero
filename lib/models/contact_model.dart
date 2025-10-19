@@ -1,7 +1,9 @@
+import 'package:flutter/widgets.dart';
+
 class ContactInfo {
   final String label;
   final String value;
-  final String icon;
+  final IconData icon;
 
   ContactInfo({
     required this.label,
